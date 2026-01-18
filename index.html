@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARAZ_AFFILIATE_LINK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+        }
+        
+        body {
+            
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            margin: 20px 0;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #FF512F, #F09819);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .loading-section {
+            margin: 40px 0;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .loading-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+        
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .spinner {
+            width: 120px;
+            height: 120px;
+            border: 10px solid rgba(255, 81, 47, 0.2);
+            border-top: 10px solid #FF512F;
+            border-radius: 50%;
+            animation: spin 2s linear infinite;
+            margin-bottom: 30px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 1.4rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        
+        .dots {
+            display: inline-block;
+            width: 60px;
+            text-align: left;
+        }
+        
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #FF512F;
+            border-radius: 50%;
+            margin: 0 3px;
+            opacity: 0;
+            animation: dotPulse 1.5s infinite;
+        }
+        
+        .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes dotPulse {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .ads-section {
+            margin: 50px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #FF512F;
+            display: inline-block;
+        }
+        
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .ad-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #f0f0f0;
+            text-align: left;
+        }
+        
+        .ad-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .ad-icon {
+            font-size: 2.5rem;
+            color: #FF512F;
+            margin-bottom: 20px;
+        }
+        
+        .ad-heading {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .ad-desc {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        .redirect-info {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            border-left: 5px solid #FF512F;
+        }
+        
+        .redirect-info h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .redirect-info p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .skip-button {
+            display: inline-block;
+            background: linear-gradient(to right, #1a2980, #26d0ce);
+            color: white;
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(26, 41, 128, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .skip-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(26, 41, 128, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #777;
+            font-size: 0.95rem;
+            border-top: 1px solid #eee;
+            background-color: #f8f9fa;
+        }
+        
+        .counter {
+            font-size: 4rem;
+            font-weight: 800;
+            color: transparent;
+            background: linear-gradient(to right, #FF512F, #F09819);
+            -webkit-background-clip: text;
+            background-clip: text;
+            margin: 20px 0;
+            opacity: 0.3;
+            user-select: none;
+        }
+        
+        /* Product Grid Styles */
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        /* Product Image Section */
+        .product-image-container {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .image-slider {
+            height: 100%;
+            position: relative;
+        }
+        
+        .image-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+            transition: opacity 0.5s ease;
+        }
+        
+        .image-slide.active {
+            display: block;
+        }
+        
+        .video-slide {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        
+        .video-slide.active {
+            display: block;
+        }
+        
+        .slider-controls {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background-color: white;
+        }
+        
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+            transform: translateY(-50%);
+        }
+        
+        .arrow {
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+            transition: background-color 0.3s ease;
+        }
+        
+        .arrow:hover {
+            background-color: white;
+        }
+        
+        .availability {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+        
+        .in-stock {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .out-of-stock {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        /* Product Info Section */
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .rating-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .rating-stars {
+            display: flex;
+            gap: 3px;
+        }
+        
+        .star {
+            font-size: 1.2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .star:hover {
+            color: #f1c40f;
+        }
+        
+        .star.active {
+            color: #f1c40f;
+        }
+        
+        .rating-text {
+            margin-left: 10px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .product-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-right: 10px;
+        }
+        
+        .reaction-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        
+        .reaction-btn:hover {
+            color: #e74c3c;
+            transform: scale(1.1);
+        }
+        
+        .reaction-btn.active {
+            color: #e74c3c;
+        }
+        
+        .reaction-count {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-left: 5px;
+        }
+        
+        /* Price and Comment Section */
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .price-discount {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .current-price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .original-price {
+            font-size: 1.2rem;
+            color: #95a5a6;
+            text-decoration: line-through;
+        }
+        
+        .discount-badge {
+            background-color: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .comment-section {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .comment-icon {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin-right: 8px;
+        }
+        
+        .comment-count {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        /* Add to Cart Button */
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Product Description */
+        .product-description {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        /* Other Shops Section Inside Product Card */
+        .other-shops-container {
+            margin-top: auto;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .shops-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .shops-slider-container {
+            position: relative;
+            overflow: hidden;
+            padding: 5px 0;
+        }
+        
+        .product-shops-slider {
+            display: flex;
+            gap: 15px;
+            transition: transform 0.5s ease;
+        }
+        
+        .shop-card {
+            min-width: 200px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+        }
+        
+        .shop-header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+            background-color: white;
+        }
+        
+        .shop-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .shop-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .shop-product {
+            padding: 12px;
+        }
+        
+        .shop-product-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+        
+        .shop-product-price {
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        .shop-product-rating {
+            color: #f1c40f;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .shop-product-description {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .view-btn {
+            width: 100%;
+            padding: 8px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .view-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .shop-slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .shop-slider-nav-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: white;
+            border: 1px solid #3498db;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .shop-slider-nav-btn:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* Zoom Modal */
+        .zoom-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+        
+        .modal-image, .modal-video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Comments Modal */
+        .comments-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .comments-content {
+            width: 90%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .comment-form {
+            margin-bottom: 20px;
+        }
+        
+        .comment-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        
+        .submit-comment-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .comment-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comment-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .comment-details {
+            flex-grow: 1;
+        }
+        
+        .comment-author {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .comment-text {
+            color: #555;
+        }
+        
+        .close-comments {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+        
+        /* Shop Products Modal */
+        .shop-products-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .shop-products-content {
+            width: 90%;
+            max-width: 1000px;
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .shop-products-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .shop-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .shop-product-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .buy-now-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .close-shop-products {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .spinner {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .ads-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-shops-slider {
+                gap: 12px;
+            }
+            
+            .shop-card {
+                min-width: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .shop-card {
+                min-width: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="loading-section">
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    
+                    <div class="loading-text">
+                        Loading<span class="dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+                    </div>
+                    
+                    <div class="counter" id="hiddenCounter">10</div>
+                </div>
+            </div>
+            
+          <!----  <div class="redirect-info">
+                <h3><i class="fas fa-info-circle"></i> What's Happening?</h3>
+                <p>This page is displaying our partner advertisements. In a few moments, you will be automatically redirected to the Daraz website, where you'll find special offers and discounts. This process is completely automatic and secure.</p>
+            </div> -->
+            
+            <div class="ads-section">
+                <h2 class="section-title">Today's Special Offers</h2>
+                
+                <div class="products-container">
+                    <h1>Our Featured Products</h1>
+                    
+                    <!-- Product Cards -->
+                    <div class="products-grid">
+                        <!-- Product Card 1 -->
+                        <div class="product-card" data-product-id="1">
+                            <div class="product-image-container">
+                                <div class="image-slider">
+                                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Headphones" class="image-slide active">
+                                    <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Headphones Side View" class="image-slide">
+                                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Headphones Case" class="image-slide">
+                                    <video class="video-slide" controls>
+                                        <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-listening-to-music-with-headphones-3984-large.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                
+                                <div class="availability in-stock">Available</div>
+                                
+                                <div class="slider-controls">
+                                    <div class="slider-dot active" data-index="0"></div>
+                                    <div class="slider-dot" data-index="1"></div>
+                                    <div class="slider-dot" data-index="2"></div>
+                                    <div class="slider-dot" data-index="3"></div>
+                                </div>
+                                
+                                <div class="slider-arrows">
+                                    <div class="arrow left-arrow"><i class="fas fa-chevron-left"></i></div>
+                                    <div class="arrow right-arrow"><i class="fas fa-chevron-right"></i></div>
+                                </div>
+                            </div>
+                            
+                            <div class="product-info">
+                                <div class="rating-section">
+                                    <div class="rating-stars">
+                                        <span class="star" data-rating="1"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="2"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="3"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="4"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
+                                    </div>
+                                    <span class="rating-text">(Rate this product)</span>
+                                </div>
+                                
+                                <div class="product-header">
+                                    <h3 class="product-name">Premium Wireless Headphones</h3>
+                                    <div class="reaction-container">
+                                        <button class="reaction-btn"><i class="far fa-heart"></i></button>
+                                        <span class="reaction-count">0</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-section">
+                                    <div class="price-discount">
+                                        <span class="current-price">$99.99</span>
+                                        <span class="original-price">$129.99</span>
+                                        <span class="discount-badge">23% OFF</span>
+                                    </div>
+                                    <div class="comment-section">
+                                        <i class="far fa-comment comment-icon"></i>
+                                        <span class="comment-count">0</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                                
+                                <div class="product-description">
+                                    <p>These premium wireless headphones deliver an unparalleled sound experience. With 40-hour battery backup, noise cancellation, and water-resistant design, it will be your daily companion.</p>
+                                </div>
+                                
+                                <!-- Other Shops Section Inside Product Card -->
+                                <div class="other-shops-container">
+                                    <h4 class="shops-title">Buy from other shops</h4>
+                                    
+                                    <div class="shops-slider-container">
+                                        <div class="product-shops-slider" id="shops-slider-1">
+                                            <!-- Shop 1 -->
+                                            <div class="shop-card" data-shop-id="1" data-product-id="1">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">A</div>
+                                                    <div class="shop-name">Alpha Electronics</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Premium Headphones</div>
+                                                    <div class="shop-product-price">$89.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">High-quality sound and comfortable design headphones.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 2 -->
+                                            <div class="shop-card" data-shop-id="2" data-product-id="1">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">B</div>
+                                                    <div class="shop-name">Beta Gadgets</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Bluetooth Headphones</div>
+                                                    <div class="shop-product-price">$109.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Noise cancellation wireless headphones.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 3 -->
+                                            <div class="shop-card" data-shop-id="3" data-product-id="1">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">T</div>
+                                                    <div class="shop-name">Tech Hub</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Wireless Headphones</div>
+                                                    <div class="shop-product-price">$99.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">High quality headphones with long battery life.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 4 -->
+                                            <div class="shop-card" data-shop-id="4" data-product-id="1">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">G</div>
+                                                    <div class="shop-name">Gadget World</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Premium Headset</div>
+                                                    <div class="shop-product-price">$119.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Perfect headset for gaming and music.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="shop-slider-nav">
+                                            <div class="shop-slider-nav-btn prev-shop" data-product-id="1"><i class="fas fa-chevron-left"></i></div>
+                                            <div class="shop-slider-nav-btn next-shop" data-product-id="1"><i class="fas fa-chevron-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 2 -->
+                        <div class="product-card" data-product-id="2">
+                            <div class="product-image-container">
+                                <div class="image-slider">
+                                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch" class="image-slide active">
+                                    <img src="https://images.unsplash.com/photo-1579586337278-3f4b2f6a6c5a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch Screen" class="image-slide">
+                                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Smart Watch Box" class="image-slide">
+                                    <video class="video-slide" controls>
+                                        <source src="https://assets.mixkit.co/videos/preview/mixkit-smartwatch-on-a-womans-wrist-3985-large.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                
+                                <div class="availability out-of-stock">Out of Stock</div>
+                                
+                                <div class="slider-controls">
+                                    <div class="slider-dot active" data-index="0"></div>
+                                    <div class="slider-dot" data-index="1"></div>
+                                    <div class="slider-dot" data-index="2"></div>
+                                    <div class="slider-dot" data-index="3"></div>
+                                </div>
+                                
+                                <div class="slider-arrows">
+                                    <div class="arrow left-arrow"><i class="fas fa-chevron-left"></i></div>
+                                    <div class="arrow right-arrow"><i class="fas fa-chevron-right"></i></div>
+                                </div>
+                            </div>
+                            
+                            <div class="product-info">
+                                <div class="rating-section">
+                                    <div class="rating-stars">
+                                        <span class="star" data-rating="1"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="2"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="3"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="4"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
+                                    </div>
+                                    <span class="rating-text">(Rate this product)</span>
+                                </div>
+                                
+                                <div class="product-header">
+                                    <h3 class="product-name">Smart Watch Fitness Tracker</h3>
+                                    <div class="reaction-container">
+                                        <button class="reaction-btn"><i class="far fa-heart"></i></button>
+                                        <span class="reaction-count">0</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-section">
+                                    <div class="price-discount">
+                                        <span class="current-price">$199.99</span>
+                                        <span class="original-price">$249.99</span>
+                                        <span class="discount-badge">20% OFF</span>
+                                    </div>
+                                    <div class="comment-section">
+                                        <i class="far fa-comment comment-icon"></i>
+                                        <span class="comment-count">0</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                                
+                                <div class="product-description">
+                                    <p>This smartwatch comes with heart rate monitor, sleep tracking, water resistant and 10+ sports modes. 7-day battery life and notification display will make your life easier.</p>
+                                </div>
+                                
+                                <!-- Other Shops Section Inside Product Card -->
+                                <div class="other-shops-container">
+                                    <h4 class="shops-title">Buy from other shops</h4>
+                                    
+                                    <div class="shops-slider-container">
+                                        <div class="product-shops-slider" id="shops-slider-2">
+                                            <!-- Shop 1 -->
+                                            <div class="shop-card" data-shop-id="5" data-product-id="2">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">B</div>
+                                                    <div class="shop-name">Beta Gadgets</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Smart Watch</div>
+                                                    <div class="shop-product-price">$179.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Smartwatch with fitness tracking and smartphone notifications.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 2 -->
+                                            <div class="shop-card" data-shop-id="6" data-product-id="2">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">F</div>
+                                                    <div class="shop-name">Fitness World</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Fitness Tracker</div>
+                                                    <div class="shop-product-price">$159.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Fitness band with sleep and activity tracking.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 3 -->
+                                            <div class="shop-card" data-shop-id="7" data-product-id="2">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">W</div>
+                                                    <div class="shop-name">Watch Store</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Solar Smartwatch</div>
+                                                    <div class="shop-product-price">$249.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Premium smartwatch with solar charging.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 4 -->
+                                            <div class="shop-card" data-shop-id="8" data-product-id="2">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">G</div>
+                                                    <div class="shop-name">Gadget Zone</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Smart Watch Pro</div>
+                                                    <div class="shop-product-price">$219.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Smartwatch with advanced health monitoring.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="shop-slider-nav">
+                                            <div class="shop-slider-nav-btn prev-shop" data-product-id="2"><i class="fas fa-chevron-left"></i></div>
+                                            <div class="shop-slider-nav-btn next-shop" data-product-id="2"><i class="fas fa-chevron-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Card 3 -->
+                        <div class="product-card" data-product-id="3">
+                            <div class="product-image-container">
+                                <div class="image-slider">
+                                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Running Shoes" class="image-slide active">
+                                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Shoes Side View" class="image-slide">
+                                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Shoes Back View" class="image-slide">
+                                    <video class="video-slide" controls>
+                                        <source src="https://assets.mixkit.co/videos/preview/mixkit-athlete-running-on-a-running-track-3987-large.mp4" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                
+                                <div class="availability in-stock">Available</div>
+                                
+                                <div class="slider-controls">
+                                    <div class="slider-dot active" data-index="0"></div>
+                                    <div class="slider-dot" data-index="1"></div>
+                                    <div class="slider-dot" data-index="2"></div>
+                                    <div class="slider-dot" data-index="3"></div>
+                                </div>
+                                
+                                <div class="slider-arrows">
+                                    <div class="arrow left-arrow"><i class="fas fa-chevron-left"></i></div>
+                                    <div class="arrow right-arrow"><i class="fas fa-chevron-right"></i></div>
+                                </div>
+                            </div>
+                            
+                            <div class="product-info">
+                                <div class="rating-section">
+                                    <div class="rating-stars">
+                                        <span class="star" data-rating="1"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="2"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="3"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="4"><i class="fas fa-star"></i></span>
+                                        <span class="star" data-rating="5"><i class="fas fa-star"></i></span>
+                                    </div>
+                                    <span class="rating-text">(Rate this product)</span>
+                                </div>
+                                
+                                <div class="product-header">
+                                    <h3 class="product-name">Ultra Running Shoes</h3>
+                                    <div class="reaction-container">
+                                        <button class="reaction-btn"><i class="far fa-heart"></i></button>
+                                        <span class="reaction-count">0</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="price-section">
+                                    <div class="price-discount">
+                                        <span class="current-price">$129.99</span>
+                                        <span class="original-price">$169.99</span>
+                                        <span class="discount-badge">24% OFF</span>
+                                    </div>
+                                    <div class="comment-section">
+                                        <i class="far fa-comment comment-icon"></i>
+                                        <span class="comment-count">0</span>
+                                    </div>
+                                </div>
+                                
+                                <button class="add-to-cart-btn">Add to Cart</button>
+                                
+                                <div class="product-description">
+                                    <p>These running shoes are specially designed for long distance running. Made with lightweight, shock-absorbing and breathable materials that will enhance your running experience.</p>
+                                </div>
+                                
+                                <!-- Other Shops Section Inside Product Card -->
+                                <div class="other-shops-container">
+                                    <h4 class="shops-title">Buy from other shops</h4>
+                                    
+                                    <div class="shops-slider-container">
+                                        <div class="product-shops-slider" id="shops-slider-3">
+                                            <!-- Shop 1 -->
+                                            <div class="shop-card" data-shop-id="9" data-product-id="3">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">S</div>
+                                                    <div class="shop-name">Sports Gear</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Running Shoes</div>
+                                                    <div class="shop-product-price">$119.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Lightweight and shock absorbing running shoes.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 2 -->
+                                            <div class="shop-card" data-shop-id="10" data-product-id="3">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">R</div>
+                                                    <div class="shop-name">Runners Hub</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Ultra Running Shoes</div>
+                                                    <div class="shop-product-price">$139.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star-half-alt"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Specialty designed shoes for marathon running.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 3 -->
+                                            <div class="shop-card" data-shop-id="11" data-product-id="3">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">F</div>
+                                                    <div class="shop-name">Fitness Footwear</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Running Shoes Pro</div>
+                                                    <div class="shop-product-price">$149.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="far fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">High quality shoes for professional runners.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Shop 4 -->
+                                            <div class="shop-card" data-shop-id="12" data-product-id="3">
+                                                <div class="shop-header">
+                                                    <div class="shop-icon">A</div>
+                                                    <div class="shop-name">Athletic Store</div>
+                                                </div>
+                                                <div class="shop-product">
+                                                    <div class="shop-product-name">Sports Shoes</div>
+                                                    <div class="shop-product-price">$129.99</div>
+                                                    <div class="shop-product-rating">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <div class="shop-product-description">Suitable shoes for all types of outdoor sports.</div>
+                                                    <button class="view-btn">View Products</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="shop-slider-nav">
+                                            <div class="shop-slider-nav-btn prev-shop" data-product-id="3"><i class="fas fa-chevron-left"></i></div>
+                                            <div class="shop-slider-nav-btn next-shop" data-product-id="3"><i class="fas fa-chevron-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="skip-button" id="skipButton">
+                <i class="fas fa-forward"></i> Go to Daraz Now
+            </button>
+            
+            <p style="margin-top: 20px; color: #666; font-size: 0.95rem;">
+                Click the button to go directly to Daraz website without waiting
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>This page will automatically redirect to Daraz website. &copy; 2023 Affiliate Marketing</p>
+            <p style="margin-top: 8px;">You are viewing advertisements from our advertising partners which support this website.</p>
+        </div>
+    </div>
+
+    <!-- Zoom Modal -->
+    <div class="zoom-modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img class="modal-image" src="" alt="Zoomed Image">
+            <video class="modal-video" controls autoplay>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    
+    <!-- Comments Modal -->
+    <div class="comments-modal">
+        <div class="comments-content">
+            <button class="close-comments">&times;</button>
+            <h3>Comments</h3>
+            
+            <div class="comment-form">
+                <input type="text" class="comment-input" placeholder="Write your comment...">
+                <button class="submit-comment-btn">Submit Comment</button>
+            </div>
+            
+            <div class="comments-list">
+                <!-- Comments will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Shop Products Modal -->
+    <div class="shop-products-modal">
+        <div class="shop-products-content">
+            <button class="close-shop-products">&times;</button>
+            
+            <div class="shop-products-header">
+                <div class="shop-icon">A</div>
+                <div>
+                    <h3>Alpha Electronics</h3>
+                    <p>All products from this shop</p>
+                </div>
+            </div>
+            
+            <div class="shop-products-grid">
+                <!-- Shop products will be loaded here dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Place your Daraz affiliate link here
+        const DARAZ_AFFILIATE_LINK = "https://www.daraz.com.bd/#";
+        
+        // Loading time (in seconds)
+        const LOADING_TIME = 2000;
+        
+        // Element references
+        const hiddenCounter = document.getElementById('hiddenCounter');
+        const skipButton = document.getElementById('skipButton');
+        
+        // Variables
+        let currentTime = 0;
+        let interval;
+        let isRedirecting = false;
+        
+        // Start when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            startLoading();
+            setupEventListeners();
+            initializeProductFeatures();
+        });
+        
+        // Start loading process
+        function startLoading() {
+            // Start loading animation
+            interval = setInterval(updateLoading, 100);
+        }
+        
+        // Update loading
+        function updateLoading() {
+            currentTime += 0.1; // Increase by 0.1 second every 100ms
+            
+            // Update hidden counter (for debugging or display if needed)
+            const remainingTime = LOADING_TIME - currentTime;
+            hiddenCounter.textContent = `${Math.ceil(remainingTime)}`;
+            
+            // Redirect when loading completes
+            if (currentTime >= LOADING_TIME) {
+                clearInterval(interval);
+                redirectToDaraz();
+            }
+        }
+        
+        // Redirect to Daraz function
+        function redirectToDaraz() {
+            if (isRedirecting) return;
+            
+            isRedirecting = true;
+            
+            // Redirect after 0.5 seconds
+            setTimeout(() => {
+                console.log("Redirecting to Daraz affiliate link...");
+                window.location.href = DARAZ_AFFILIATE_LINK;
+            }, 500);
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            // Skip button click
+            skipButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                if (confirm("Are you sure you want to go to Daraz website without completing the loading?")) {
+                    clearInterval(interval);
+                    redirectToDaraz();
+                }
+            });
+            
+            // Key press event (skip with Escape key)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    clearInterval(interval);
+                    redirectToDaraz();
+                }
+            });
+        }
+        
+        // Fallback redirect (if any issues occur)
+        setTimeout(() => {
+            if (!isRedirecting && window.location.href.indexOf("daraz") === -1) {
+                console.log("Fallback redirect triggered");
+                redirectToDaraz();
+            }
+        }, (LOADING_TIME + 3) * 1000); // Extra 3 seconds buffer
+        
+        // ============================================
+        // PRODUCT CARDS FUNCTIONALITY
+        // ============================================
+        
+        function initializeProductFeatures() {
+            initializeImageSliders();
+            initializeRatingStars();
+            initializeLikeButtons();
+            initializeCommentSections();
+            initializeAddToCartButtons();
+            initializeShopSliders();
+            initializeZoomFunctionality();
+            initializeShopProductView();
+        }
+        
+        // 1. Image Sliders for each product
+        function initializeImageSliders() {
+            document.querySelectorAll('.product-card').forEach(card => {
+                const slider = card.querySelector('.image-slider');
+                const slides = slider.querySelectorAll('.image-slide, .video-slide');
+                const dots = slider.parentElement.querySelectorAll('.slider-dot');
+                const leftArrow = slider.parentElement.querySelector('.left-arrow');
+                const rightArrow = slider.parentElement.querySelector('.right-arrow');
+                
+                let currentSlide = 0;
+                
+                function showSlide(index) {
+                    // Hide all slides
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    // Show current slide
+                    slides[index].classList.add('active');
+                    dots[index].classList.add('active');
+                    currentSlide = index;
+                }
+                
+                // Initialize first slide
+                showSlide(0);
+                
+                // Dot click events
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        showSlide(index);
+                    });
+                });
+                
+                // Arrow click events
+                leftArrow.addEventListener('click', () => {
+                    let newIndex = currentSlide - 1;
+                    if (newIndex < 0) newIndex = slides.length - 1;
+                    showSlide(newIndex);
+                });
+                
+                rightArrow.addEventListener('click', () => {
+                    let newIndex = currentSlide + 1;
+                    if (newIndex >= slides.length) newIndex = 0;
+                    showSlide(newIndex);
+                });
+                
+                // Auto slide every 5 seconds
+                let slideInterval = setInterval(() => {
+                    let newIndex = currentSlide + 1;
+                    if (newIndex >= slides.length) newIndex = 0;
+                    showSlide(newIndex);
+                }, 5000);
+                
+                // Pause auto slide on hover
+                slider.addEventListener('mouseenter', () => {
+                    clearInterval(slideInterval);
+                });
+                
+                slider.addEventListener('mouseleave', () => {
+                    slideInterval = setInterval(() => {
+                        let newIndex = currentSlide + 1;
+                        if (newIndex >= slides.length) newIndex = 0;
+                        showSlide(newIndex);
+                    }, 5000);
+                });
+            });
+        }
+        
+        // 2. Rating Stars
+        function initializeRatingStars() {
+            document.querySelectorAll('.rating-stars').forEach(starsContainer => {
+                const stars = starsContainer.querySelectorAll('.star');
+                const ratingText = starsContainer.nextElementSibling;
+                
+                let currentRating = 0;
+                let isRatingSet = false;
+                
+                stars.forEach(star => {
+                    star.addEventListener('mouseover', () => {
+                        if (!isRatingSet) {
+                            const rating = parseInt(star.getAttribute('data-rating'));
+                            highlightStars(rating);
+                        }
+                    });
+                    
+                    star.addEventListener('click', () => {
+                        currentRating = parseInt(star.getAttribute('data-rating'));
+                        isRatingSet = true;
+                        highlightStars(currentRating);
+                        ratingText.textContent = `(${currentRating}/5 Rated)`;
+                        showNotification('Thank you for your rating!');
+                    });
+                });
+                
+                starsContainer.addEventListener('mouseleave', () => {
+                    if (!isRatingSet) {
+                        highlightStars(0);
+                    } else {
+                        highlightStars(currentRating);
+                    }
+                });
+                
+                function highlightStars(count) {
+                    stars.forEach((s, index) => {
+                        if (index < count) {
+                            s.classList.add('active');
+                        } else {
+                            s.classList.remove('active');
+                        }
+                    });
+                }
+            });
+        }
+        
+        // 3. Like/Heart Buttons
+        function initializeLikeButtons() {
+            document.querySelectorAll('.reaction-btn').forEach(button => {
+                const countElement = button.nextElementSibling;
+                let count = parseInt(countElement.textContent);
+                let isLiked = false;
+                
+                button.addEventListener('click', () => {
+                    if (!isLiked) {
+                        count++;
+                        button.innerHTML = '<i class="fas fa-heart"></i>';
+                        button.classList.add('active');
+                        isLiked = true;
+                        showNotification('Added to favorites!');
+                    } else {
+                        count--;
+                        button.innerHTML = '<i class="far fa-heart"></i>';
+                        button.classList.remove('active');
+                        isLiked = false;
+                        showNotification('Removed from favorites!');
+                    }
+                    countElement.textContent = count;
+                });
+            });
+        }
+        
+        // 4. Comment Sections
+        function initializeCommentSections() {
+            const commentsModal = document.querySelector('.comments-modal');
+            const closeComments = commentsModal.querySelector('.close-comments');
+            const commentInput = commentsModal.querySelector('.comment-input');
+            const submitCommentBtn = commentsModal.querySelector('.submit-comment-btn');
+            const commentsList = commentsModal.querySelector('.comments-list');
+            
+            let currentProductId = null;
+            
+            // Open comments modal
+            document.querySelectorAll('.comment-section').forEach(section => {
+                section.addEventListener('click', () => {
+                    const productCard = section.closest('.product-card');
+                    currentProductId = productCard.getAttribute('data-product-id');
+                    const productName = productCard.querySelector('.product-name').textContent;
+                    
+                    // Update modal title
+                    commentsModal.querySelector('h3').textContent = `Comments for ${productName}`;
+                    
+                    // Load existing comments
+                    loadComments();
+                    
+                    // Show modal
+                    commentsModal.style.display = 'flex';
+                });
+            });
+            
+            // Close comments modal
+            closeComments.addEventListener('click', () => {
+                commentsModal.style.display = 'none';
+                commentInput.value = '';
+            });
+            
+            // Submit comment
+            submitCommentBtn.addEventListener('click', () => {
+                const commentText = commentInput.value.trim();
+                if (commentText) {
+                    addComment(commentText);
+                    commentInput.value = '';
+                    
+                    // Update comment count
+                    const productCard = document.querySelector(`.product-card[data-product-id="${currentProductId}"]`);
+                    const commentCount = productCard.querySelector('.comment-count');
+                    let count = parseInt(commentCount.textContent);
+                    commentCount.textContent = count + 1;
+                }
+            });
+            
+            // Submit on Enter key
+            commentInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    submitCommentBtn.click();
+                }
+            });
+            
+            // Close modal when clicking outside
+            commentsModal.addEventListener('click', (e) => {
+                if (e.target === commentsModal) {
+                    commentsModal.style.display = 'none';
+                }
+            });
+            
+            function loadComments() {
+                // In a real app, you would fetch comments from a server
+                // For demo, we'll use sample comments
+                const sampleComments = [
+                    { author: 'John D.', text: 'Great product! Highly recommended.', time: '2 hours ago' },
+                    { author: 'Sarah M.', text: 'Good quality for the price.', time: '1 day ago' },
+                    { author: 'Mike T.', text: 'Fast delivery, exactly as described.', time: '3 days ago' }
+                ];
+                
+                commentsList.innerHTML = '';
+                
+                sampleComments.forEach(comment => {
+                    const commentItem = document.createElement('div');
+                    commentItem.className = 'comment-item';
+                    commentItem.innerHTML = `
+                        <div class="comment-profile">${comment.author.charAt(0)}</div>
+                        <div class="comment-details">
+                            <div class="comment-author">${comment.author} <span style="color: #95a5a6; font-size: 0.8rem;">${comment.time}</span></div>
+                            <div class="comment-text">${comment.text}</div>
+                        </div>
+                    `;
+                    commentsList.appendChild(commentItem);
+                });
+            }
+            
+            function addComment(text) {
+                const commentItem = document.createElement('div');
+                commentItem.className = 'comment-item';
+                commentItem.innerHTML = `
+                    <div class="comment-profile">Y</div>
+                    <div class="comment-details">
+                        <div class="comment-author">You <span style="color: #95a5a6; font-size: 0.8rem;">Just now</span></div>
+                        <div class="comment-text">${text}</div>
+                    </div>
+                `;
+                commentsList.insertBefore(commentItem, commentsList.firstChild);
+                showNotification('Comment added successfully!');
+            }
+        }
+        
+        // 5. Add to Cart Buttons
+        function initializeAddToCartButtons() {
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const productCard = button.closest('.product-card');
+                    const productName = productCard.querySelector('.product-name').textContent;
+                    const productPrice = productCard.querySelector('.current-price').textContent;
+                    
+                    // Check if product is in stock
+                    const availability = productCard.querySelector('.availability');
+                    if (availability.classList.contains('out-of-stock')) {
+                        showNotification('Sorry, this product is out of stock!', 'error');
+                        return;
+                    }
+                    
+                    // Add to cart animation
+                    const originalText = button.textContent;
+                    button.textContent = 'Added to Cart!';
+                    button.style.backgroundColor = '#27ae60';
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.backgroundColor = '';
+                    }, 2000);
+                    
+                    showNotification(`${productName} added to cart for ${productPrice}`);
+                });
+            });
+        }
+        
+        // 6. Shop Sliders
+        function initializeShopSliders() {
+            document.querySelectorAll('.product-card').forEach(card => {
+                const productId = card.getAttribute('data-product-id');
+                const slider = card.querySelector(`#shops-slider-${productId}`);
+                const prevBtn = card.querySelector(`.prev-shop[data-product-id="${productId}"]`);
+                const nextBtn = card.querySelector(`.next-shop[data-product-id="${productId}"]`);
+                
+                if (!slider) return;
+                
+                const shopCards = slider.querySelectorAll('.shop-card');
+                const cardWidth = 215; // 200px width + 15px gap
+                let currentPosition = 0;
+                const maxPosition = -(shopCards.length - 1) * cardWidth;
+                
+                function updateSlider() {
+                    slider.style.transform = `translateX(${currentPosition}px)`;
+                }
+                
+                prevBtn.addEventListener('click', () => {
+                    if (currentPosition < 0) {
+                        currentPosition += cardWidth;
+                        updateSlider();
+                    }
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentPosition > maxPosition) {
+                        currentPosition -= cardWidth;
+                        updateSlider();
+                    }
+                });
+            });
+        }
+        
+        // 7. Zoom Functionality
+        function initializeZoomFunctionality() {
+            const zoomModal = document.querySelector('.zoom-modal');
+            const closeModal = zoomModal.querySelector('.close-modal');
+            const modalImage = zoomModal.querySelector('.modal-image');
+            const modalVideo = zoomModal.querySelector('.modal-video');
+            
+            // Image click to zoom
+            document.querySelectorAll('.image-slide, .video-slide').forEach(media => {
+                media.addEventListener('click', () => {
+                    if (media.classList.contains('image-slide')) {
+                        modalImage.src = media.src;
+                        modalImage.style.display = 'block';
+                        modalVideo.style.display = 'none';
+                    } else if (media.classList.contains('video-slide')) {
+                        modalVideo.innerHTML = media.innerHTML;
+                        modalVideo.style.display = 'block';
+                        modalImage.style.display = 'none';
+                    }
+                    zoomModal.style.display = 'flex';
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                zoomModal.style.display = 'none';
+                modalVideo.pause();
+            });
+            
+            // Close modal when clicking outside
+            zoomModal.addEventListener('click', (e) => {
+                if (e.target === zoomModal) {
+                    zoomModal.style.display = 'none';
+                    modalVideo.pause();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && zoomModal.style.display === 'flex') {
+                    zoomModal.style.display = 'none';
+                    modalVideo.pause();
+                }
+            });
+        }
+        
+        // 8. Shop Products View
+        function initializeShopProductView() {
+            const shopProductsModal = document.querySelector('.shop-products-modal');
+            const closeShopProducts = shopProductsModal.querySelector('.close-shop-products');
+            const shopProductsGrid = shopProductsModal.querySelector('.shop-products-grid');
+            const shopProductsHeader = shopProductsModal.querySelector('.shop-products-header');
+            
+            // View shop products button
+            document.querySelectorAll('.view-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const shopCard = e.target.closest('.shop-card');
+                    const shopId = shopCard.getAttribute('data-shop-id');
+                    const shopIcon = shopCard.querySelector('.shop-icon').textContent;
+                    const shopName = shopCard.querySelector('.shop-name').textContent;
+                    
+                    // Update modal header
+                    shopProductsHeader.querySelector('.shop-icon').textContent = shopIcon;
+                    shopProductsHeader.querySelector('h3').textContent = shopName;
+                    
+                    // Load shop products
+                    loadShopProducts(shopId);
+                    
+                    // Show modal
+                    shopProductsModal.style.display = 'flex';
+                });
+            });
+            
+            // Close modal
+            closeShopProducts.addEventListener('click', () => {
+                shopProductsModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            shopProductsModal.addEventListener('click', (e) => {
+                if (e.target === shopProductsModal) {
+                    shopProductsModal.style.display = 'none';
+                }
+            });
+            
+            function loadShopProducts(shopId) {
+                // In a real app, you would fetch products from a server
+                // For demo, we'll use sample products
+                const sampleProducts = [
+                    { name: 'Wireless Earbuds', price: '$49.99', rating: 4.5, description: 'True wireless earbuds with charging case' },
+                    { name: 'Phone Case', price: '$19.99', rating: 4.0, description: 'Protective case for smartphones' },
+                    { name: 'Power Bank', price: '$39.99', rating: 4.8, description: '10000mAh fast charging power bank' },
+                    { name: 'Bluetooth Speaker', price: '$59.99', rating: 4.3, description: 'Portable waterproof speaker' },
+                    { name: 'USB Cable', price: '$9.99', rating: 4.2, description: 'Fast charging USB-C cable' },
+                    { name: 'Screen Protector', price: '$14.99', rating: 4.1, description: 'Tempered glass screen protector' }
+                ];
+                
+                shopProductsGrid.innerHTML = '';
+                
+                sampleProducts.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'shop-product-card';
+                    productCard.innerHTML = `
+                        <h4>${product.name}</h4>
+                        <div class="shop-product-price">${product.price}</div>
+                        <div class="shop-product-rating">
+                            ${generateStars(product.rating)}
+                        </div>
+                        <p>${product.description}</p>
+                        <button class="buy-now-btn">Buy Now</button>
+                    `;
+                    shopProductsGrid.appendChild(productCard);
+                });
+                
+                // Add click event to Buy Now buttons
+                shopProductsGrid.querySelectorAll('.buy-now-btn').forEach(button => {
+                    button.addEventListener('click', () => {
+                        showNotification('Redirecting to shop...');
+                        setTimeout(() => {
+                            window.open(DARAZ_AFFILIATE_LINK, '_blank');
+                        }, 1000);
+                    });
+                });
+            }
+            
+            function generateStars(rating) {
+                let stars = '';
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 >= 0.5;
+                
+                for (let i = 0; i < fullStars; i++) {
+                    stars += '<i class="fas fa-star"></i>';
+                }
+                
+                if (hasHalfStar) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                }
+                
+                const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+                for (let i = 0; i < emptyStars; i++) {
+                    stars += '<i class="far fa-star"></i>';
+                }
+                
+                return stars;
+            }
+        }
+        
+        // Utility function to show notifications
+        function showNotification(message, type = 'success') {
+            // Remove existing notification if any
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+            
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background-color: ${type === 'error' ? '#e74c3c' : '#2ecc71'};
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 8px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                ">
+                    ${message}
+                </div>
+            `;
+            
+            // Add CSS for animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideIn {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add notification to page
+            document.body.appendChild(notification);
+            
+            // Remove notification after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
